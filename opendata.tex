@@ -1,146 +1,586 @@
-\documentclass{beamer}[16pt]
+\documentclass{beamer}
 
-\usepackage[utf8]{inputenc}
-% \usepackage{default}
+% package hyperref needs these to be set here
 
-\author{Pritvi Jheengut}
-\title{Open Data In Mauritius}
-% \maketitle
-\usepackage[T1]{fontenc}
-\usepackage[utf8]{inputenc}
+\author{Pritvi Jheengut @zcoldplayer}
+\subject{DevConMU - Open Data}
+
+\usepackage[size=a4, orientation=landscape, scale=3.5]{beamerposter}
+
 \usepackage{lmodern}
-
-\usepackage{hyperref}
-\usepackage{pgfarrows,pgfnodes,pgfautomata,pgfheaps,pgfshade}
+\usepackage{fontenc}[T1]
+\usepackage{inputenc}[utf8]
+\usepackage{hyperref}[pdfpagelabels=true,bookmarks=true,
+  unicode=true]
+\usepackage{pgf}
+%\usepackage{verbatim}
 
 \usepackage{listings}
-\usepackage[all]{xy}
+\usepackage{xy}[all]%% License to be introduced
 
-\title{An introduction to Open Source/Hardware/Design/Data}
-\subtitle{An introduction to Open Source/Hardware/Design/Data. Do you use Open 
-Data? A brief follow up of the Open Data Initiative by the World Bank for the 
-Government Of Mauritius. What should we expect from an Open Data Portal?}
-\author{Pritvi Jheengut}
-\date{ }
 
-% \usetheme{Rodrigues}
+%  Eliminate errors such as
+%  LaTeX Font Warning: Font shape `T1/cmss/m/n' in size <4> not available
+%  LaTeX Font Warning: Size substitutions with differences up to 1.0pt 
+
+\mode<presentation>{
+  
+  \useoutertheme{infolines}
+  \usecolortheme{whale}
+  
+  \definecolor{ncurses}{HTML}{B7DFFF}
+  \definecolor{darkblue}{HTML}{253789}
+  \definecolor{light}{HTML}{A2CDEE}
+  \definecolor{confgreen}{HTML}{3CA387}
+  
+  \setbeamercolor{Title bar}{fg=black!50}
+  \setbeamercolor{frametitle}{parent=Title bar}
+  \setbeamercolor{titlelike}{parent=light,bg=confgreen,fg=white}
+  \setbeamercolor{block title}{bg=darkblue,fg=light}
+  
+  \setbeamercovered{transparent,dynamic}
+  
+  \setbeamertemplate{blocks}[rounded][shadow=true]
+  \setbeamertemplate{background canvas}[vertical shading]
+                    [top=confgreen!35,middle=light!5,bottom=red!50]
+
+  \mode<handout>{\beamertemplatesolidbackgroundcolor{black!50}}
+                    
+}
 
 \begin{document}
 
-\frame{\titlepage}
+\section{Definition and Introduction to Open Data}
 
+\title[DevConMU - Open Data]{Open Data in the Government of 
+  Mauritius. Finally!!!}
+\subtitle{Three years ago, the World Bank introduced and
+  leveraged the  use of \\
+  Open Data onto the Government of Mauritius. \\
+  A great era of Open Data is looming forward, \\
+  maybe the next big pillar of our economy. \\
+  This session will cover a broad definition of Open Data,\\
+  current platforms delivering Open Data by other governments in 
+  the World. \\
+  An overview of how to use Open Data and exploiting it.\\
+  A wide coverage and importance of licensing and intellectual
+  property.  
+}
+
+\date[Developers Conference - Educator 2]{Developers Conference
+  -  19 May 2018}
+
+\maketitle
+
+\subsection{CopyLeft License}
 
 \frame{
-An introduction to Free Software
+  \frametitle{Copyleft License Attribution}
 
-\begin{itemize}
-      \item It all began in 1980's
-      \item The first FREE SOFTWARE LICENSE
-      \item The GPL :: GNU General Public License
-     \end{itemize}
+  Made with love using beamer, LaTeX and git.
+  
+  \begin{alertblock}{This work is licensed under the LaTeX Project
+      Public License.}
+    To view a copy of this license, visit \\
+    \url{https://www.latex-project.org/lppl.txt}    
+  \end{alertblock}
+  
+  \begin{alertblock}{This work is licensed under the Creative
+      Commons Attribution 4.0 International License.}
+    To view a copy of this license, visit \\
+    \url{http://creativecommons.org/licenses/by/4.0/} or \\
+    
+    send a letter to \\
+    Creative Commons, \\
+    PO Box 1866, \\
+    Mountain View, \\
+    CA 94042, \\
+    USA. \\
+  \end{alertblock}
+}
+
+\subsection{Free and Open Source Software}
+
+\frame{
+  \frametitle{FOSS - Free Source Software}
+  
+  The origins of Open Data dates back since the Free Software
+  Movement.
+  
+  \pause
+  
+  \begin{block}{Free Software}
+    \begin{itemize}
+    \item The Free Software Movement began in the 1980's
+    \item Free Software cannot exist without a License
+    \item The first FREE SOFTWARE LICENSE :: The GPL,GNU General
+      Public License
+    \end{itemize}
+  \end{block}
+  
+  \pause
+  
+  \begin{block}{What do you understand by FREE Software}
+    we mean that it respects the users' and the developers essential
+    freedoms:
+    \begin{itemize}
+    \item the freedom to run it,   
+    \item to study and
+    \item change it, and
+    \item to redistribute copies with or without  changes. 
+    \end{itemize}
+    
+  \end{block}
+
+  \pause
+  
+  \begin{fact}
+    This is a matter of freedom, not price, so think of free speech,
+    not free beer.
+  \end{fact}
+  
+}
+
+\frame{
+  \frametitle{FOSS - Open Source Software}
+
+  \begin{block}{\url{https://opensource.org/}}
+\begin{quote}{}
+    The Open Source Initiative is celebrating its 20th Anniversary
+    in 2018.\\
+    OSI was formed in 1998 as an educational, advocacy, and
+    stewardship organization at this important moment in the
+    history of collaborative development.
+    \end{quote}
+  \end{block}
+  
+  \begin{block}{The Open Source Movement Initiative started in the
+      late 90's with the most famous example::}
+    The death of Netscape and Mozilla  as a phoenix.
+  \end{block}
 
 }
 
 \frame{
+  \frametitle{Open VS Free Software License! Who wins?}
+  
+  \begin{block}{Confused}
+    There exist not much difference between an Open and a Free
+    Software License.
+  \end{block}
+  
+  \pause
+  
+  \begin{block}{Famously pointed by Richard Stallman }
+    In the blog post of Why Open Source misses the point of Free
+    Software
+    \url{https://www.gnu.org/philosophy/open-source-misses-the-point.html.en}
+    
+  \end{block}
 
- we mean that it respects the users' essential freedoms: 
- \begin{itemize}
-      \item  the freedom to run it, 
-      \item to study and
-      \item change it, and
-      \item to redistribute copies with or without  changes. 
-     \end{itemize}
-     
-     This is a matter of freedom, not price, so think of free speech, not free 
-beer.
+  \pause
+  
+  \vspace{2cm}
+  \begin{quote}
+    \huge{
+      Open source is a development \\
+      methodology;\\
+      
+      \pause
+      
+      Free software is a \\
+      social movement.
+    }
+  \end{quote}
+  
+}
+
+\section{Open Data}
+\subsection{Definition of Open Data}
+
+\frame{
+  \frametitle{What is Open Data after all?}
+  
+  \begin{block}{Open Data is characterised by the fact that }
+    data should be available in a suitable format to everyone to
+    \pause with an unlimited right for use, reuse  and
+    \pause republish, redistribute as they wish without
+    restrictions from copyright patents or other mechanisms of
+    control. 
+  \end{block}
+
+  \pause
+  
+  \begin{Definition}
+    Open Data is also usually defined as DATA that can be easily
+    retrieved, read and processed by both \\
+    \huge { \pause HUMANS and MACHINES.}
+  \end{Definition}
+
+  \pause
+  
+  \begin{quote}
+    \huge{A completely Open Data should be \\
+      characterised as free of any cost.}
+  \end{quote}
+
+  \begin{alertblock}{source:}
+    McKinsey Global Institute Analysis
+  \end{alertblock}
+
+}
+
+\subsection{Why use Open Data?}
+
+\frame{
+  \frametitle{Advantages of Open Data}
+
+  \begin{block}{Advantages and Benefits of Open Data for the Republic
+      of Mauritius - Part 1}
+    
+    \begin{itemize}
+    \item Commissions Open Standards and Collaboration when royalty
+      free Open Data is made available through an Open Data Portal.
+    \item Innovative Entrepreneurial, Business and Economic valuable
+      resources help companies to define new products and services
+      thus increases and encourages competitivity, collaboration and
+      improvements.
+    \item Training Environment promotes creativity and lowers
+      barriers to transfer of knowledge enabling to build advanced
+      technical skills.
+    \item Enables the creation and upgrade of local ICT skills as
+      well as startups via open collaboration thus lowering
+      cost for local ICT development with the  adoption of FLOSS.
+      
+    \end{itemize}
+    
+  \end{block}
+  
 }
 
 \frame{
-Open VS Free
-
-Not much difference between them
-
-
-
+  \frametitle{Advantages of Open Data}
+  
+  \begin{block}{Advantages and Benefits of Open Data for the Republic
+      of Mauritius - Part 2}
+    
+    \begin{itemize}
+    \item Reduce search and transaction costs via a common Open API
+      while also emphasising the promotion of social inclusion,
+      participation and transparency
+    \item Analysis and accountability publishing by NGO's, Civil
+      Society Organisations and media outlets of Open Data will
+      permit more Data exchange and transparency on top of feeding
+      the results into better governmental policy.
+    \item Increases Governmental agencies efficiency by empowering
+      the acquisition, exchange, reuse and sharing of Datasets within
+      governmental bodies.
+    \end{itemize}  
+    
+    \huge Sharing is caring.
+    
+  \end{block}
+  
 }
-\frame{
 
-
-Open data is the idea that some data should be freely available to everyone to
-\begin{itemize}
-      \item use
-      \item republish as they wish
-      \item  without restrictions from copyright
-      \item patents or other mechanisms of control. 
-     \end{itemize} 
-}
-
-
-\frame{
-Benefits	of	Open	Data	\\
-
-• Giving	rise	to	new	businesses	and	
-Economic	value	
- helping	established	companies	define	
-new	products	and	services. \\
-
-• Civil	Society	Organiza0ons	and	media	
-Transparency	/	
-will	analyze	the	data	and	publish	
-accountability	
-results,	feeding	into	policy.	
-Data	exchange	\\
-
- • Obtaining	datasets	within	government	
-across	government	
- becomes	easier.	
-Data-informed	\\
-
- • Policymakers	base	their	decisions	on	
-policy	making	
- applicable,	relevant	data.		
-
-
-}
+\subsection{Open Datasets Portals}
 
 \frame{
-Open	Data	Readiness	Assessment	(ODRA)	 \\
- Tool developed by the World Bank to help
-prioritize actions in Open Data Program
+  \frametitle{Open Data Portal}
+  
+  \begin{block}{Dataset or Data Set}
+    There exist no formal definition of a Dataset in Open Data
+    parlance. A Dataset can be understood as matrix of data
+    whereby the column represents a particular variable and the
+    row a given datum.\\
+    All Open data formats should be defined with an Open Standard
+    metadata on top of data or else it is not machine readable nor
+    might it be human readable.    
+  \end{block}
 
+  \begin{block}{The Open Data Portal}
+    An Open Data portal is a repository where several Datasets are
+    stored using an Open Standard framework such that a user has
+    been attributed without any discrimination the capacity to
+    acquire and retrieve data such that it is relevant, exact,
+    correct, reusable, royalty free and unrestricted.
+  \end{block}
+  
+}
+    
+\frame{
+  \frametitle{Governmental Open Data Providers - Part 1}
+  
+  \begin{block}{\url{https://data.europa.eu/euodp/en/home}}
+    The European Union Open Data Portal provides access to open data
+    published by EU institutions and bodies.
+  \end{block}
+
+  \begin{block}{\url{https://www.europeandataportal.eu/}}
+    The European Data Portal harvests the metadata of Public
+    Sector Information available on public data portals across
+    European countries.
+  \end{block}
+  
+  \begin{block}{\url{https://data.gov.au/}}
+    Data.gov.au provides an easy way to find, access and reuse
+    public data. Improve functionality based on user feedback.
+    Government Data is encouraged to analyse, mashup and develop
+    tools and applications to benefit all Australians. 
+  \end{block}
 
 }
 
 \frame{
-Policy Framework \\
+  \frametitle{Governmental Open Data Providers - Part 2}
 
- Data protection legislation and implementation
-structures within government \\
-
-Absence of FOI legislation \& lack of clear policies 
-on the copyright and licensing of gov’t information
+  \begin{block}{\url{https://data.gov.in/}}
+    This portal is intended to be used by Government of India to
+    publish Datasets, documents, services, tools and applications
+    collected by them for public use. It intends to increase
+    transparency in the functioning of Government.
+  \end{block}
+    
+  \begin{block}{\url{https://www.data.gov/}}
+    The home of the U.S. Government's open data provides data,
+    tools, and resources to conduct research, develop web and
+    mobile applications, design data visualizations, and more.
+  \end{block}
+  
+  \begin{block}{\url{https://open.canada.ca/en/open-data}}
+    Portal of Canadian Open Data where anyone can learn how to work
+    with Datasets, and see what people have done with open data
+    across the country.
+  \end{block}
+  
 }
 
 \frame{
-Demand for Open Data \\
- Strong expressed data demand by software
-developers, private sector, civil society and academia
+  \frametitle{Governmental Open Data Providers - Part 3}
 
+  \begin{block}{\url{https://data.gov.uk/}}
+    Find data published by central government, local authorities
+    and public bodies to help you build products and services.
+  \end{block}
+  
+  \begin{block}{\url{https://www.data.gouv.fr/fr/}}
+    Partagez, am\'eliorez et r\'eutilisez les donn\'ees publiques
+    avec la mission d'accompagner l'ouverture des donn\'ees
+    publiques de l'Etat et des administrations.
+  \end{block}
 
-
-Key Findings and Recommendations:
-Civic Engagement \& Capabilities 
-
-\begin{itemize}
-      \item Universities and colleges offer programs for ICT
-and statistics skills development (incl. big data)
-      \item  Island attracts international tech skill workers
-      \item   No data journalism; no social media engagement
-     \end{itemize}  
+  \begin{block}{\url{https://data.govmu.org/}}
+    OpenData Mauritius in line with the e-Government Strategy and
+    the Open Data Policy, has implemented the National Open Data
+    portal which houses and provides links to the Datasets of
+    Government Agencies in an open format. This initiative empowers
+    citizens and businesses for carrying out data-driven
+    initiatives such as development of mobile apps, data analysis,
+    creation of innovative products and research among others.
+  \end{block}
+    
 }
 
- 
+\frame{
+  \frametitle{Non Governmental Open Data Providers}
+
+  \begin{block}{\url{http://opendatatoolkit.worldbank.org/en/}}
+    The Open Government Data Toolkit help governments understand
+    the precepts of Open Data to plan and implement an Open
+    Government Data program.
+  \end{block}
+    
+  \begin{block}{\url{http://opendata.cern.ch/}}
+    Explore more than 1 petabyte of open data from particle physics!
+  \end{block}
+  
+  \begin{block}{\url{https://data.world/}}
+    The most meaningful, collaborative, and abundant data resource
+    in the world.
+  \end{block}
+  
+  \begin{block}{\url{https://data.cdp.net/}}
+    The Carbon Disclosure Project Open Data Portal.
+  \end{block}
+  
+  \begin{block}{\url{http://www.odatastore.com/}}
+    Open Data Store for open, transparent, collaborative City
+    platform. 
+  \end{block}
+  
+  Further information available via
+  \url{http://docs.getdkan.com/en/latest/introduction/dkan-sites.html}
+}
+
+\subsection{Overview of using Open Data}
+    
+\frame{
+  \frametitle{Datasets}
+  
+  \begin{block}{Types of Available Datasets}
+    There are several types of Datasets such as
+    \begin{itemize}
+    \item List of Emergency Numbers, Police Stations \& Hospital
+    \item WIFI Hotspots, Internet Services \& ICT usage in business
+    \item Total expenditure of the Judiciary
+    \item Workers injured in work accidents
+    \item Rates of allowances paid under social aid
+    \item Average expenditure per tourist per night by country of residence
+    \item Vital statistics rates \& Population growth in intercensal periods 
+    \item Postcodes and Localities 
+    \item Transport statistics; Rates of accident, fatality \& casualty
+    \item Productivity and Competitiveness Indicators
+    \item Wage Rate Indices
+    \item Electors, voters and valid votes \& Candidates, and seats
+      occupied in the national parliament
+    \item Budgetary Central Government
+    \item Forest plantations by type of plants
+    \item Offence rate per 1000 population by type
+    \end{itemize}
+  \end{block}
+
+}
+    
+\frame{
+  \frametitle{Accessing Open Data and Cataloguing Open Data}
+  
+  \begin{block}{Getting Access to Open Data}
+    Once the Datasets have been identified, the Open Data Portal can either
+    permit anonymous access or a permitted user to gain access to a
+    particular type of Open Data.
+  \end{block}
+  
+  \begin{block}{Description, Identification and Open Data Documentation}
+    
+    \begin{itemize}
+    \item Metadata is imperative using Open Standards to describe the Open
+      Data.
+    \item Taxonomy of Open Data allows it to become searchable and
+      identifiable for further use. 
+    \item A good Documentation of the Dataset is crucial so as to avoid
+      public complaints becomes necessary while either the metadata or
+      the portal of the Dataset should furnish such information.
+    \end{itemize}
+  \end{block}
+    
+}
+    
+\frame{
+  \frametitle{Publishing Open Data}
+  
+  \begin{block}{Publishing of Open Data}
+    Open Datasets are published using Open Data formats that are human
+    and machine readable and for which the documentation is available
+    for everyone to consult.
+  \end{block}
 
 
+  \begin{block}{Some common formats of Open Data are:}
+    \begin{itemize}
+    \item ASCII
+    \item CSV
+    \item JSON, GeoJSON
+    \item XML
+    \item RDF
+    \item Tagged HTML / API
+    \end{itemize}
+  \end{block}
 
+  \begin{block}{Found out which Open Data satisfying your needs}
+    Once Open Data has been scouted out there are several steps into
+    discovering the magic of Governmental Open Data.
+  \end{block}
+    
+}
+    
+\frame{
+  \frametitle{Using Open Data}
+  
+  \begin{block}{Using Open Data}
+    \begin{itemize}
+    \item Plotting Graphs, bar charts,... etc are the most convenient
+      way of visualising Open Data and is one the easiest to understand.
+    \item Make a table, pull the data into a spreadsheet or database
+    \item Add the data on top of another layer of any GIS enabled program
+      such as QGIS, OpenStreetMap
+    \item Engage your processed Open Data by using social sharing
+    \item Make blog post of the Open Data
+    \item Enhance your CMS with Open Data
+    \item Become a Data Journalist
+    \item Organise Hackathon, BootCamps, talk about it.
+    \end{itemize}
+
+    Most Importantly, link your Open Data to the Governmental Open Data,
+    this will surely aggrandise your own Datasets. This is win-win
+    situation for all concerned parties.
+    \url{https://eaves.ca/2010/04/14/case-study-open-data-and-the-public-purse/}
+
+  \end{block}
+  
+}
+
+\section{The Importance of Licensing and Intellectual Property}
+
+\frame{
+  \frametitle{Who Owns the Data?}
+  
+  \begin{block}{Licensing Data}
+    Open Data becomes usable when published in a Machine and Human
+    readable Data Format but this criteria does not justify its status
+    as Open Data. \\
+    Data is classified as Open Data only when it is licensed. \\
+    The Terms and Conditions of the use of Open Data is governed by an
+    Open License such as the Creative Commons Attribution 4.0
+    International License. \\
+    Once licensed, people and machines must be able to use the Open Data
+    in any manner, including transforming, combining and sharing
+    nonethelessly commercially too.
+  \end{block}
+
+  \begin{block}{Copyright of Open Data}
+    Copyright is an area of Intellectual Property law which covering
+    original creative works as such Data. In the case of the Government
+    Open Data, copyright belong to the Government depending on the
+    license it is using for its Data. There is also Laws which This is
+    clearly very important.
+  \end{block}
+  
+  Licensing allows copyright owners to permit approved use and reuse
+  of their work, without relinquishing copyright fully. Licensing
+  can permit both commercial and non-commercial reuse of a work,
+  depending on the terms of the licence, and licences may last in
+  perpetuity or for a specified period. The application of a licence
+  does not mean that a copyright statement should not be applied
+  to a work, and many licences such as Creative Commons suggest that
+  the copyright holder is credited. Open Data is usually associated with
+  an Open Licence such as CC-BY (Creative Commons Attribution Only)
+  or a Publication Domain Dedication such as CC0.
+  
+}
+
+\frame{
+  \frametitle{Open Source Initiative vs Freedom of Information Act}
+  
+  \begin{block}{Open Source Initiative}
+
+  \end{block}
+
+  
+  \begin{block}{Freedom Of Information Act}
+    Freedom of Information will be a powerful tool at the hands of the
+    citizens and promote transparency and accountability.
+
+    The  main  difference  between  the  Open  Data  Initiative  and
+    the  Freedom  of Information   Act intended   to   be   introduced
+    by Government   according   the Government  Programme  2015 – 2019
+    ,  is  that  Open  Data  proactively  looks  at datasets  that
+    Government  can  make  publicly  available  whilst  the  Freedom
+    of Information Act reacts to requests for data made by citizens.
+    Hence, the Open by Default concept governs the Open Data Initiative.
+    \end{block}
+
+}
 \end{document}
+
+
+
